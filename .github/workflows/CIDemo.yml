@@ -1,8 +1,29 @@
-name: GitHub Actions Demo
-#run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Run NUnit Selenium Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  Explore-GitHub-Actions:
+  build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "🎉 This is me testing workflows"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x' # Change this to match your project version
+
+      - name: Restore NuGet packages
+        run: dotnet restore
+
+      - name: Build the project
+        run: dotnet build --configuration Release
+
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal
