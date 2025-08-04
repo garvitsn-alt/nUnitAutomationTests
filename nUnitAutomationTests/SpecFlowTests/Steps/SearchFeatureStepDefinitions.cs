@@ -13,11 +13,11 @@ namespace nUnitAutomationTests.SpecFlowTests.Steps
         IWebDriver driver;
         LogInPage loginPage;
 
-        public SearchFeatureStepDefinitions(ScenarioContext context)
+      /*  public SearchFeatureStepDefinitions(ScenarioContext context)
         {
             // Retrieve driver shared from Hook
             driver = (IWebDriver)context["driver"];
-        }
+        }*/
 
 
         [BeforeScenario]
@@ -40,12 +40,17 @@ namespace nUnitAutomationTests.SpecFlowTests.Steps
             loginPage = new LogInPage(driver);
             loginPage.Search(city);
 
+
+
+            loginPage.HitSearchButton();
         }
 
         [Then(@"I should see some results")]
         public void ThenIShouldSeeSomeResults()
         {
-            // Assert.Pass;
+            Console.WriteLine("Pass");
+
+            loginPage.CheckMoreLabel();
         }
     }
 }

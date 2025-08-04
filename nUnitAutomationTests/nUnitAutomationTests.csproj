@@ -10,6 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Hooks\Hooks.cs" />
+    <Compile Remove="Utilities\ExtentManager.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="ExtentReports" Version="5.0.4" />
     <PackageReference Include="ExtentReports.Core" Version="1.0.3" />
@@ -30,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Hooks\" />
     <Folder Include="Reports\" />
     <Folder Include="SpecFlowTests\Features\" />
     <Folder Include="TestReports\" />

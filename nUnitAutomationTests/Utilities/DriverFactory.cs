@@ -14,7 +14,12 @@ namespace nUnitAutomationTests.Utilities
 
         public static IWebDriver InitDriver()
         {
-            driver = new ChromeDriver();
+
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--headless");
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
+            driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
             return driver;
 
