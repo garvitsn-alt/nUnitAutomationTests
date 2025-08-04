@@ -1,23 +1,25 @@
-name: Run NUnit Selenium Tests
+name: Run Selenium Tests
 
-on: push
+on: [push]
+
 jobs:
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x' # Change this to match your project version
+          dotnet-version: '7.0.x'
 
-      - name: Restore NuGet packages
+      - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build the project
-        run: dotnet build --configuration Release
+      - name: Build the solution
+        run: dotnet build --configuration Debug --no-restore
 
       - name: Run tests
         run: dotnet test --no-build --verbosity normal
