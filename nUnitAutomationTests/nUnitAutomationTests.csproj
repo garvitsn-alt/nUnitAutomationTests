@@ -36,4 +36,8 @@
     <Folder Include="TestResults\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include=".github\workflows\CIDemo.yml" />
+  </ItemGroup>
+
 </Project>
